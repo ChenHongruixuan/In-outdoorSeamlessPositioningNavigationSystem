@@ -2,7 +2,7 @@
 
 
 ## Description
-
+We developed this indoor and outdoor seamless positioning and navigation system under the Android system by using the built-in multi-sensors of mobile phones.
 
 ## Algorithm
 ### Indoor Positioning
