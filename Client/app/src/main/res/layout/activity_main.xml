@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/position_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/my_osm_map_view"
+        tilesource="MapquestOSM"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:enabled="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/dest_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="5"
+            android:background="#FCFCFC"
+            android:cursorVisible="false"
+            android:hint="查找目的地"
+            android:lines="1"
+            android:padding="10dp"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/seek_button"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="-3dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="9dp"
+            android:layout_weight="1"
+            android:text="搜索"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/position_text_view"
+        android:layout_toRightOf="@+id/position_text_view"
+        tools:ignore="RtlHardcoded">
+
+        <Button
+            android:id="@+id/building_high"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="100dp"
+            android:drawableTop="@drawable/layer"
+            android:text="室内地图"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/wifi_locate"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/building_high"
+            android:layout_marginLeft="300dp"
+            android:drawableTop="@drawable/wifi"
+            android:text="wifi定位"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/route_line"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wifi_locate"
+            android:layout_marginLeft="300dp"
+            android:drawableTop="@drawable/route"
+            android:text="路线规划"
+            android:textSize="12sp"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/locate_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="39dp"
+        android:layout_marginStart="15dp"
+        android:background="#ffffff"
+        android:backgroundTint="#ffffff"
+        android:scaleType="center"
+        android:src="@android:drawable/ic_menu_compass"
+        android:tint="#000000"
+        app:backgroundTint="@android:color/black"
+        app:fabSize="mini"
+        tools:targetApi="lollipop" />
+</RelativeLayout>
