@@ -21,3 +21,5 @@ The indoor map is stored in the disk of the server in the form of custom XML fil
 
 ## Illustration
 
+## Q & A
+For any questions, you're welcomed to contact me.
