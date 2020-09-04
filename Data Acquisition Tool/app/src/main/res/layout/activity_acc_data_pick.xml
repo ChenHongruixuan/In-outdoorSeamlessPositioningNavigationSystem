@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/pick_fre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="输入采样频率（默认50Hz)"
+        tools:ignore="HardcodedText" />
+    <Button
+        android:id="@+id/start_pick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始采集"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/stop_pick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="停止采集"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/acc_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="返回"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/acc_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/gyr_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/ori_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/mag_data_pick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="磁场数据采集"
+        tools:ignore="HardcodedText" />
+    <Button
+        android:id="@+id/acc_data_pick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加速度数据采集"
+        tools:ignore="HardcodedText" />
+    <Button
+        android:id="@+id/wifi_data_pick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wifi信号采集"
+        tools:ignore="HardcodedText" />
+    <Button
+        android:id="@+id/read_nfc_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="读取NFC数据"
+        tools:ignore="HardcodedText" />
+    <Button
+        android:id="@+id/write_nfc_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="向NFC写数据"
+        tools:ignore="HardcodedText" />
+
+</LinearLayout>
+
