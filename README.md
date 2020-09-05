@@ -20,6 +20,11 @@ By writing the position of some indoor key points and areas with instable WiFi s
 The indoor map is stored in the disk of the server in the form of custom XML file, and there is corresponding index in the database. When the client receives the indoor map, the parsing module parses the content of the map, instantiates the indoor map object after parsing, and the drawing module draws the indoor map according to the object rendering.
 
 ## Illustration
+### Client
+
+
+### Data Acquisition Tool
+
 
 ## Q & A
-For any questions, please do not hesitate to contact [me](Qschrx@gmail.com).
+For any questions, please do not hesitate to contact me (Qschrx@gmail.com).
