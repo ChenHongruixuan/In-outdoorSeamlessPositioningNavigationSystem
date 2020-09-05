@@ -1,4 +1,4 @@
-# In-outdoorSeamlessPositioningNavigationSystem
+# IndoorOutdoorSeamlessPositioningNavigationSystem
 
 
 ## Description
