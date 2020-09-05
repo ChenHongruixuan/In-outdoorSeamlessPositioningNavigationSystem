@@ -24,7 +24,7 @@ The indoor map is stored in the disk of the server in the form of custom XML fil
 
 
 ### Data Acquisition Tool
-[Data Acquisition Tool -- Main](https://github.com/I-Hope-Peace/In-outdoorSeamlessPositioningNavigationSystem/blob/master/ScreenShots/DataAT/1.png)
+![Data Acquisition Tool -- Main](https://github.com/I-Hope-Peace/In-outdoorSeamlessPositioningNavigationSystem/blob/master/ScreenShots/DataAT/1.png)
 
 ## Q & A
 For any questions, please do not hesitate to contact me (Qschrx@gmail.com).
