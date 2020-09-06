@@ -21,8 +21,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * PosDataTransService在后台每隔2s上传一次用户当前位置，通过接收服务器返回的状态码
- * 判断用户当前的位置状态
+ * PosDataTransService uploads the user's current position every 2S in the background,
+ * and receives the status code returned by the server
  */
 public class PosDataTransService extends IntentService {
 
@@ -49,9 +49,9 @@ public class PosDataTransService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         PosDataTransCallback mPosDataTransCallback = new PosDataTransCallback();
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)       // 设置连接超时
-                .readTimeout(30, TimeUnit.SECONDS)         // 设置读超时
-                .writeTimeout(30, TimeUnit.SECONDS)        // 设置写超时
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
                 .build();
         while (!isSendPosStop) {
             double nowLongitude = NowClientPos.getNowLongitude();
@@ -95,27 +95,31 @@ public class PosDataTransService extends IntentService {
             switch (statusCode) {
 
                 /*
-                  室外进入室内，需要进行的操作有：
-                  向服务器请求室内地图，开启室内定位模块，关闭GPS定位
+                  When entering the indoor, the operations need to be carried out are:
+                  request the indoor map from the server,
+                  open the indoor positioning module,
+                  and close the outdoor positioning module
                  */
                 case OUTDOOR_TO_INDOOR:
                     Status.setIsIndoor(true);
                     Intent otiIntent = new Intent("outdoor_to_indoor");
                     mContext.sendBroadcast(otiIntent);
                     break;
-                    /*
-                      室内进入室外，需要进行的操作有：
-                      移除室内地图，关闭室内定位模块，开启GPS定位
-                     */
+                /*
+                  When entering the outdoor, the operations need to be carried out are:
+                  remove the indoor map,
+                  close the indoor positioning module,
+                  and open the outdoor positioning module
+                 */
                 case INDOOR_TO_OUTDOOR:
                     Status.setIsIndoor(false);
                     Intent itoIntent = new Intent("indoor_to_outdoor");
                     mContext.sendBroadcast(itoIntent);
                     break;
-                case OUTDOOR:   // 仍处在室外
+                case OUTDOOR:
                     Status.setIsIndoor(false);
                     break;
-                case INDOOR:    // 仍处在室内
+                case INDOOR:
                     Status.setIsIndoor(true);
                     break;
                 default:

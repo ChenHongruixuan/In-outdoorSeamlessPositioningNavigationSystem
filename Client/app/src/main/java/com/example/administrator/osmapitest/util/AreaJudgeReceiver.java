@@ -10,7 +10,7 @@ import com.example.administrator.osmapitest.data.ClientPos;
 import java.util.Objects;
 
 /**
- * 判断用户初始位置的广播接收器
+ * The broadcast receiver for judging the initial location of user
  */
 public class AreaJudgeReceiver extends BroadcastReceiver {
     private int count = 1;
@@ -22,7 +22,7 @@ public class AreaJudgeReceiver extends BroadcastReceiver {
         switch (Objects.requireNonNull(action)) {
             case "locate":
                 ClientPos ClientPos = (ClientPos) intent.getSerializableExtra("pos_data");
-                // 当前定位来源是GPS且定位精度小于20m，则说明用户处于室外
+                // If the position source is GPS and the accuracy < 20m, the user is in the outdoor area
                 if ("gps".equals(ClientPos.getProvider()) &&
                         ClientPos.getAccuracy() < 30) {
                     Intent statusIntent = new Intent("init_outdoor");
@@ -36,7 +36,7 @@ public class AreaJudgeReceiver extends BroadcastReceiver {
                 Log.e(TAG, "" + ClientPos.getProvider());
 
 
-                // 当技术器增加到7时，可以认为用户处在室内
+                // Otherwise, when the count > 7, the user is in the room
                 if (count >= 8) {
                     Intent statusIntent = new Intent("init_indoor");
                     context.sendBroadcast(statusIntent);

@@ -57,7 +57,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 室内外无缝定位系统的主活动
+ * The main activity of indoor/outdoor seamless positioning and navigation system
  */
 @SuppressLint("MissingPermission")
 public class MainActivity extends NfcBaseActivity implements View.OnClickListener,
@@ -92,8 +92,8 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).hide();   // 隐藏标题栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);   // 隐藏状态栏
+        Objects.requireNonNull(getSupportActionBar()).hide();   // Hide the title bar
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);    // Hide the status bar
         setContentView(R.layout.activity_main);
         getPermissions();   // 动态权限获取
         uiHandler = new UIHandler();
@@ -109,13 +109,12 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
         inertialLocIntent =
                 new Intent(MainActivity.this, InertialLocateService.class);
 
-        initReceiver(); // 初始化广播接收器
-        initOutdoorLocation(); // 室外定位初始化
-
+        initReceiver(); // Initialize broad receiver
+        initOutdoorLocation(); // Initialize outdoor positioning module
     }
 
     /**
-     * 初始化地图及其控件
+     * Initialize map and its widget
      */
     public void initMap() {
         mMapView = findViewById(R.id.my_osm_map_view);
@@ -142,7 +141,7 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
     }
 
     /**
-     * 初始化广播接收器
+     * Initialize broad receiver
      */
     private void initReceiver() {
         dataReceiver = new DataReceiver();
@@ -170,7 +169,7 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
     }
 
     /**
-     * 初始化控件
+     * Initialize widget
      */
     private void initWidget() {
         Button Building_high = findViewById(R.id.building_high);
@@ -180,8 +179,8 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
         btnSeek = findViewById(R.id.seek_button);
         btnSeek.setEnabled(false);
         btnSeek.getBackground().mutate().setAlpha(153);
-        seekEdit.getBackground().mutate().setAlpha(153);//设置为半透明
-        seekEdit.getViewTreeObserver().addOnGlobalLayoutListener(this); // 对软键盘出现和隐藏进行监听
+        seekEdit.getBackground().mutate().setAlpha(153);
+        seekEdit.getViewTreeObserver().addOnGlobalLayoutListener(this);
         route_line.setOnClickListener(this);
         wifiPos.setOnClickListener(this);
         Building_high.setOnClickListener(this);
@@ -191,7 +190,7 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
     }
 
     /**
-     * 室外定位初始化
+     * Initialize outdoor positioning module
      */
     private void initOutdoorLocation() {
         mLocationListener = new OutdoorLocListener(getApplicationContext());
@@ -207,7 +206,7 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
     private boolean isInitIndoor = false;
 
     /**
-     * 接收定位结果的广播接收器
+     * The broadcast receiver receive location result
      */
     class DataReceiver extends BroadcastReceiver {
         @Override
@@ -230,7 +229,7 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
                         Intent getIndoorMapIntent = getIndoorMapIntent(NowClientPos.getNowFloor(),
                                 NowClientPos.getNowLongitude(), NowClientPos.getNowLatitude());
                         startService(getIndoorMapIntent);
-                        // 开启惯性定位
+                        // Open inertial positioning module
                         inertialLocIntent.putExtra("init_pos", ClientPos);
                         startService(inertialLocIntent);
                     }
@@ -238,22 +237,23 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
                 case "indoor_map":
                     IndoorMap indoorMap = (IndoorMap) intent.getSerializableExtra("indoor_map");
                     mDrawIndoorMap.drawIndoorMap(indoorMap);
-                    updateLocOverlay(); // 在加载了室内地图后，需要更新当前位置，防止室内地图遮挡用户图标
+                    // After loading the indoor map,
+                    // the current location needs to be updated to prevent the indoor map from blocking the user icon
+                    updateLocOverlay();
                     mMapView.invalidate();
                     break;
-                case "no_map":  // 当前区域不存在室内地图
-                    // 弹出提示框
+                case "no_map":  // There is no indoor map for current area
                     AlertDialogFactory.getNoMapDialog(getApplicationContext()).show();
                     break;
-                case "navigate":    // 导航
+                case "navigate":    // Navigation
                     mDrawNavRoute.removeNavRoute(mMapView, uiHandler);
                     mNavigationThread.setIntent(intent);
                     new Thread(mNavigationThread).start();
                     break;
-                case "stop_nav":    // 停止导航
+                case "stop_nav":    // Stop navigation
                     mDrawNavRoute.removeNavRoute(mMapView, uiHandler);
                     break;
-                case "no_nav_info": // 目标区域在数据库中没有记录
+                case "no_nav_info": // There is no area in the database
                     new AlertDialog.Builder(context)
                             .setTitle("系统提示")
                             .setMessage("目标区域不存在，请重新确认").setCancelable(false)
@@ -266,7 +266,7 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
     }
 
     /**
-     * 接收位置状态的广播接收器
+     * Broadcast receiver for receiving position status
      */
     class StatusChangeReceiver extends BroadcastReceiver {
         @Override
@@ -337,7 +337,7 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
 
 
     /**
-     * 更新定位图标的位置
+     * Update the position of location icon
      */
     private void updateLocOverlay() {
         mMapView.getOverlays().remove(mDLOverlay);
@@ -345,10 +345,10 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
     }
 
     /**
-     * 开启室内定位模块
+     * Open indoor positioning module
      */
     private void startIndoorLoc() {
-        isCanReadNfc = true;    // 开启Nfc校正模块
+        isCanReadNfc = true;    // Open NFC module
         // 开启惯性定位模块
         ClientPos ClientPos = new ClientPos(NowClientPos.getNowLatitude(), NowClientPos.getNowLongitude());
         inertialLocIntent.putExtra("init_pos", ClientPos);
@@ -356,11 +356,11 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
     }
 
     /**
-     * 关闭室内定位模块
+     * Close indoor positioning module
      */
     private void stopIndoorLoc() {
-        isCanReadNfc = false;    // 关闭Nfc校正模块
-        stopService(inertialLocIntent);  // 关闭惯性定位模块
+        isCanReadNfc = false;    // Close NFC module
+        stopService(inertialLocIntent);  // Close indoor positioning module
     }
 
     private boolean isNowNav = false;
@@ -481,9 +481,6 @@ public class MainActivity extends NfcBaseActivity implements View.OnClickListene
         }
     }
 
-    /**
-     * 动态获取权限
-     */
     private void getPermissions() {
         List<String> permissionList = new ArrayList<>();
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)

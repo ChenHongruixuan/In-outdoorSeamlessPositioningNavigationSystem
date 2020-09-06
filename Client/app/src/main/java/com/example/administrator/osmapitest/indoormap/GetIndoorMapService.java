@@ -23,8 +23,8 @@ import okhttp3.Response;
  * Request indoor map from server
  * There are three situations for requesting indoor map:
  * 1. Outdoor to indoor
- * 2. 室内楼层切换
- * 3. 初始就处于室内
+ * 2. Switch  floor
+ * 3. Stay in the room at beginning
  */
 public class GetIndoorMapService extends IntentService {
     private static String TAG = "GetIndoorMapService";
@@ -44,14 +44,14 @@ public class GetIndoorMapService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        String floor = String.valueOf(Objects.requireNonNull(intent).getStringExtra("floor"));  // 获取请求室内地图的楼层
-        String longitude = Objects.requireNonNull(intent).getStringExtra("longitude");  // 请求的经度
-        String latitude = Objects.requireNonNull(intent).getStringExtra("latitude");  // 请求的纬度
+        String floor = String.valueOf(Objects.requireNonNull(intent).getStringExtra("floor"));  // floor of the indoor map
+        String longitude = Objects.requireNonNull(intent).getStringExtra("longitude");
+        String latitude = Objects.requireNonNull(intent).getStringExtra("latitude");
 
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)       // 设置连接超时
-                .readTimeout(30, TimeUnit.SECONDS)         // 设置读超时
-                .writeTimeout(30, TimeUnit.SECONDS)        // 设置写超时
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
                 .build();
 
         // 构造请求对象

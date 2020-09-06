@@ -73,9 +73,9 @@ public class DrawIndoorMap {
             geoPointList.add(mapNode.getGeoPoint());
         }
         Polygon polygon = new Polygon();
-        polygon.setStrokeWidth(1);  // 设置边界线宽
-        polygon.setFillColor(argb);   // 设置地图的颜色
-        geoPointList.add(geoPointList.get(0));    // 将多边形闭合
+        polygon.setStrokeWidth(1);
+        polygon.setFillColor(argb);
+        geoPointList.add(geoPointList.get(0));
         polygon.setPoints(geoPointList);
         polygon.setTitle(title);
         mMapView.getOverlays().add(polygon);
