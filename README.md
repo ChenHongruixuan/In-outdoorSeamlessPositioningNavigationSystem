@@ -17,6 +17,9 @@ The system obtains the data of the gravity sensor and orientation sensor, uses t
 By writing the position of some indoor key points and areas with instable WiFi signals into the NFC tag and paste them in the corresponding position. When the user enters the indoor area and reaches the position with the tag, the device can be pasted near the tag to read the position information stored in the tag and corrected position. Compared with WiFi positioning, NFC tag is used for position correction with high accuracy.
 
 #### Indoor Map
+<div align="center">
+<img src="https://github.com/I-Hope-Peace/In-outdoorSeamlessPositioningNavigationSystem/blob/master/ScreenShots/Client/室内地图.png" height=18% width=18% >
+</div>
 The indoor map is stored in the disk of the server in the form of custom XML file, and there is corresponding index in the database. When the client receives the indoor map, the parsing module parses the content of the map, instantiates the indoor map object after parsing, and the drawing module draws the indoor map according to the object rendering.
 
 ## Illustration
