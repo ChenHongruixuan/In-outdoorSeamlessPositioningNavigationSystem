@@ -35,7 +35,7 @@ The indoor map is stored in the disk of the server in the form of custom XML fil
  
 <img src="https://github.com/I-Hope-Peace/In-outdoorSeamlessPositioningNavigationSystem/blob/master/ScreenShots/Client/室内外无缝导航.png" height=20.5% width=20.5% >
 </div>
-<p align="center">Left to right: outdoor to indoor, indoor navaigation, request the indoor map of other floor, indoor/outdoor seamless navigation, NFC</p>
+<p align="center">Left to right: outdoor to indoor, indoor navaigation, request the indoor map of other floor, indoor/outdoor seamless navigation</p>
 
 ### Data Acquisition Tool
 <div align="center">
