@@ -26,7 +26,16 @@ The indoor map is stored in the disk of the server in the form of custom XML fil
 
 ## Illustration
 ### Client
-
+<div align="center">
+<img src="https://github.com/I-Hope-Peace/In-outdoorSeamlessPositioningNavigationSystem/blob/master/ScreenShots/Client/用户从室外进入室内.png" height=18% width=18% >
+ 
+<img src="https://github.com/I-Hope-Peace/In-outdoorSeamlessPositioningNavigationSystem/blob/master/ScreenShots/Client/室内导航.png" height=18% width=18% >
+ 
+<img src="https://github.com/I-Hope-Peace/In-outdoorSeamlessPositioningNavigationSystem/blob/master/ScreenShots/Client/请求其它楼层的室内地图.png" height=18% width=18% >
+ 
+<img src="https://github.com/I-Hope-Peace/In-outdoorSeamlessPositioningNavigationSystem/blob/master/ScreenShots/Client/室内外无缝导航.png" height=18% width=18% >
+</div>
+<p align="center">Left to right: main, magnetic field data acquisition, acceleration data acquisition, WiFi data acquisition, NFC</p>
 
 ### Data Acquisition Tool
 <div align="center">
