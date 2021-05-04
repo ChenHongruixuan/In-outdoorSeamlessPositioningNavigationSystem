@@ -2,7 +2,7 @@
 
 
 ## Description
-We developed this indoor and outdoor seamless positioning and navigation system under the Android system by using the built-in multi-sensors of mobile phones.
+We developed this indoor and outdoor seamless positioning and navigation system under the Android system by using the built-in multi-sensors of mobile phones.  
 This system have won won the Second Prize of ESRI Cup GIS Software Development Contest in China (Top 6 in 105) and Second Prize of GIS Contest in Anhui Province.
 
 ## Algorithm
